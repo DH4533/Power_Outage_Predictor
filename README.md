@@ -25,9 +25,11 @@ We performed the following key cleaning steps:
 - Added derived time features like `OUTAGE.START.HOUR` and `OUTAGE.START.MONTH`.
 
 Below is a distribution of outage durations, showing a strong right skew.
+
 <iframe src="imgs/duration_hist.html" width="800" height="500" frameborder="0"></iframe>
 
 This plot shows how outage duration varies across different cause categories. **Weather-related causes** and **fuel supply issues** tend to have the longest durations on average.
+
 <iframe src="imgs/duration_by_cause.html" width="900" height="550" frameborder="0"></iframe>
 
 # Assessment of Missingness
@@ -46,3 +48,19 @@ The permutation test yielded a **p-value of 0.0220**, which is below our 0.05 si
 This suggests that missingness in `CAUSE.CATEGORY.DETAIL` **does depend** on `CLIMATE.CATEGORY`, and is therefore **not Missing Completely At Random (MCAR)**.
 
 <iframe src="imgs/missingness_test.html" width="800" height="500" frameborder="0"></iframe>
+
+# Hypothesis Testing
+
+We wanted to test whether **weather-related outages** tend to last longer than **non-weather-related outages**.
+
+We created a new binary column `IS_WEATHER` where 1 indicates a weather-related cause. We then performed a permutation test on `OUTAGE.DURATION.HOURS` to test the following hypotheses:
+
+- **Null Hypothesis (H₀):** Weather-related and non-weather-related outages have the same average duration.
+- **Alternative Hypothesis (H₁):** Weather-related outages last longer, on average.
+
+The observed difference in mean duration was **42.30 hours**.  
+The permutation test yielded a **p-value of 0.0000**.
+
+This very small p-value provides strong evidence against the null hypothesis, suggesting that **weather-related outages are significantly longer** than non-weather outages.
+
+<iframe src="imgs/weather_duration_test.html" width="850" height="500" frameborder="0"></iframe>
