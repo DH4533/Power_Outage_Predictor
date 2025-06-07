@@ -30,9 +30,18 @@ This plot shows how outage duration varies across different cause categories. **
 <iframe src="imgs/duration_by_cause.html" width="900" height="550" frameborder="0"></iframe>
 
 # Assessment of Missingness
+
 We suspect that the `CAUSE.CATEGORY.DETAIL` column is **Not Missing At Random (NMAR)**.
 
 The missingness of this column likely depends on the value itself. In many cases, a utility might not provide a detailed explanation of the cause if the event was ambiguous or uncertain. This means the missingness is tied to the nature of the outage itself — not just other columns. As a result, we believe this column is NMAR.
 
 To confirm this, we would ideally want access to internal reporting policies from utilities, or more metadata about when and how detailed causes are logged.
 
+We tested whether missingness in `CAUSE.CATEGORY.DETAIL` depends on `CLIMATE.CATEGORY` using a permutation test.
+
+The observed difference in missingness rates was **0.0827**.  
+The permutation test yielded a **p-value of 0.0220**, which is below our 0.05 significance level.
+
+This suggests that missingness in `CAUSE.CATEGORY.DETAIL` **does depend** on `CLIMATE.CATEGORY`, and is therefore **not Missing Completely At Random (MCAR)**.
+
+<iframe src="imgs/missingness_test.html" width="800" height="500" frameborder="0"></iframe>
