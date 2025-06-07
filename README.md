@@ -64,3 +64,45 @@ The permutation test yielded a **p-value of 0.0000**.
 This very small p-value provides strong evidence against the null hypothesis, suggesting that **weather-related outages are significantly longer** than non-weather outages.
 
 <iframe src="imgs/weather_duration_test.html" width="850" height="500" frameborder="0"></iframe>
+
+# Framing a Prediction Problem
+
+Our prediction problem is:
+
+> **Can we predict whether a power outage was caused by weather, based only on features available at the time of the event?**
+
+This is a **binary classification** problem, where:
+- `1` = Weather-related outage
+- `0` = Non-weather-related outage
+
+We created a column `IS_WEATHER` as the target variable.
+
+We chose this problem because accurately predicting weather-related outages could help utility companies allocate resources and issue alerts faster in real time.
+
+We selected the following features to predict `IS_WEATHER`:
+- `MONTH`: Indicates the time of year (seasonal patterns)
+- `NERC.REGION`: Captures regional variability in weather and infrastructure
+- `CUSTOMERS.AFFECTED`: Size of the impact (log-transformed)
+- `CLIMATE.CATEGORY`: Captures climate episodes like El Niño
+- `OUTAGE.START.HOUR`: Time of day
+
+### Evaluation Metric
+
+Since both false positives and false negatives are important (we don’t want to miss weather events, but also don’t want to falsely predict them), we use the **F1-score** as our evaluation metric. It balances **precision** and **recall**.
+
+# Baseline Model
+
+For our baseline model, we used two features:
+- `MONTH` (quantitative): The time of year the outage occurred
+- `NERC.REGION` (categorical): Regional code that can capture geographic variation
+
+We trained a **logistic regression classifier** using a scikit-learn `Pipeline`. We used:
+- `StandardScaler` on `MONTH`
+- `OneHotEncoder` on `NERC.REGION`
+
+We evaluated the model using 5-fold cross-validation and computed the **F1-score** for each fold:
+
+- Fold scores: 0.701, 0.629, 0.726, 0.538, 0.585
+- **Average F1-score**: **0.636**
+
+This simple model serves as our baseline and will be compared against a more complex model in the next step.
