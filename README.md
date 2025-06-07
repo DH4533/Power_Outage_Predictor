@@ -26,7 +26,7 @@ We performed the following key cleaning steps:
 
 Below is a distribution of outage durations, showing a strong right skew.
 
-<iframe src="assets/duration_hist.html" width="800" height="600" frameborder="0"></iframe>
+<iframe src="assets/duration_hist.html" width="900" height="600" frameborder="0"></iframe>
 
 This plot shows how outage duration varies across different cause categories. **Weather-related causes** and **fuel supply issues** tend to have the longest durations on average.
 
