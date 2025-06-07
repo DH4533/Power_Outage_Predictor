@@ -70,7 +70,7 @@ To confirm this, we would ideally want access to internal reporting policies fro
 We tested whether missingness in `CAUSE.CATEGORY.DETAIL` depends on `CLIMATE.CATEGORY` using a permutation test.
 
 The observed difference in missingness rates was **0.0827**.  
-The permutation test yielded a **p-value of 0.0220**, which is below our 0.05 significance level.
+The permutation test yielded a **p-value of 0.0230**, which is below our 0.05 significance level.
 
 This suggests that missingness in `CAUSE.CATEGORY.DETAIL` **does depend** on `CLIMATE.CATEGORY`, and is therefore **not Missing Completely At Random (MCAR)**.
 
