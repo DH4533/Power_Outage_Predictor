@@ -40,25 +40,24 @@ This plot shows how outage duration varies across different cause categories. **
 
 <iframe src="assets/duration_by_cause.html" width="900" height="600" frameborder="0"></iframe>
 
-**Table: Average outage duration (in hours) by cause category and climate condition**
+The table below shows the **average outage duration (in hours)** grouped by both **cause** and **climate category** (Cold, Normal, Warm).
 
-| Cause                 |   cold |   normal |   warm |
-|:----------------------|-------:|---------:|-------:|
-| equipment failure     |    5.1 |     53.4 |    8.4 |
-| fuel supply emergency |  290.5 |    127.6 |  380   |
-| intentional attack    |    8.3 |      7.1 |    5.2 |
-| islanding             |    4.3 |      2.4 |    3.5 |
-| public appeal         |   35.4 |     22.9 |    9.9 |
+| Cause                         |   cold |   normal |   warm |
+|:------------------------------|-------:|---------:|-------:|
+| equipment failure             |    5.1 |     53.4 |    8.4 |
+| fuel supply emergency         |  290.5 |    127.6 |  380   |
+| intentional attack            |    8.3 |      7.1 |    5.2 |
+| islanding                     |    4.3 |      2.4 |    3.5 |
+| public appeal                 |   35.4 |     22.9 |    9.9 |
+| severe weather                |   54.7 |     67.7 |   73.6 |
+| system operability disruption |   10   |     15.7 |    8   |
 
-This pivot table shows the average duration of outages across different **CAUSE.CATEGORY** values, grouped by **CLIMATE.CATEGORY** (`cold`, `normal`, and `warm`).
+**Interpretation**:  
+- Outages caused by **fuel supply emergencies** and **severe weather** have the **longest average durations**, especially during **warm climate periods**, where durations reach **380 hours** and **73.6 hours**, respectively.
+- In contrast, outages due to **islanding** or **intentional attacks** are relatively short and consistent across climates.
+- The variation across climate conditions indicates that some causes (e.g., fuel supply issues) are **exacerbated by seasonal or environmental stress**, such as high summer energy demand or winter fuel shortages.
 
-From the table, we can observe:
-
-- **Fuel supply emergencies** have by far the **longest average durations**, especially during **warm (380 hours)** and **cold (290.5 hours)** climate periods.
-- **Equipment failures** have significantly longer durations during **normal** climate conditions (53.4 hours), compared to cold (5.1) and warm (8.4).
-- **Public appeals** and **intentional attacks** tend to have shorter outages overall, with durations mostly below 35 hours across all climate types.
-
-This table highlights how both the **type of outage cause** and the **prevailing climate condition** can influence how long a power outage lasts — a relationship that could help utilities prioritize responses during certain conditions.
+This aggregation helps reveal which combinations of **cause and climate** tend to lead to the most severe outages — valuable insight for planning and resource allocation.
 
 # Assessment of Missingness
 
