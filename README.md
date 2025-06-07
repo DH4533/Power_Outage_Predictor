@@ -106,3 +106,45 @@ We evaluated the model using 5-fold cross-validation and computed the **F1-score
 - **Average F1-score**: **0.636**
 
 This simple model serves as our baseline and will be compared against a more complex model in the next step.
+
+# Final Model
+
+For our final model, we expanded the feature set to better capture patterns in weather-related outages. In addition to `MONTH` and `NERC.REGION`, we added:
+
+- `LOG_CUSTOMERS_AFFECTED`: Log-transformed number of customers affected (impact size)
+- `CLIMATE.CATEGORY`: Seasonal climate condition (e.g., Warm, Cold)
+- `OUTAGE.START.HOUR`: Time of day the outage began
+
+We used a **Random Forest Classifier**, which can capture nonlinear interactions between features. We tuned the following hyperparameters using `GridSearchCV`:
+- `n_estimators`: [50, 100]
+- `max_depth`: [5, 10, None]
+
+### 🔍 Best Parameters
+```text
+max_depth = None  
+n_estimators = 100
+```
+
+# Fairness Analysis
+
+To assess fairness, we asked:
+
+> **Does our model perform equally well across different seasons — specifically Winter vs. Summer outages?**
+
+We used **precision** as our metric, since it's important to know whether the weather-related predictions we make are actually correct. We compared:
+
+- **Winter** = December–February
+- **Summer** = June–August
+
+We conducted a **permutation test** with the following hypotheses:
+
+- **Null Hypothesis (H₀):** Precision is the same for Winter and Summer outages.
+- **Alternative Hypothesis (H₁):** Precision differs between the two groups.
+
+### 📊 Results
+- **Observed precision difference**: 0.0263
+- **P-value**: 1.0000
+
+Since the p-value is very high, we **fail to reject the null hypothesis**, meaning there is **no significant evidence** of unfairness in model precision between Winter and Summer outages.
+
+<iframe src="imgs/fairness_precision_test.html" width="800" height="500" frameborder="0"></iframe>
