@@ -25,3 +25,4 @@ We performed the following key cleaning steps:
 - Added derived time features like `OUTAGE.START.HOUR` and `OUTAGE.START.MONTH`.
 
 Below is a distribution of outage durations, showing a strong right skew.
+<iframe src="imgs/duration_hist.html" width="800" height="500" frameborder="0"></iframe>
