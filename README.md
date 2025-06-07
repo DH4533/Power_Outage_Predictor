@@ -26,11 +26,11 @@ We performed the following key cleaning steps:
 
 Below is a distribution of outage durations, showing a strong right skew.
 
-<iframe src="assets/duration_hist.html" width="800" height="500" frameborder="0"></iframe>
+<iframe src="assets/duration_hist.html" width="800" height="600" frameborder="0"></iframe>
 
 This plot shows how outage duration varies across different cause categories. **Weather-related causes** and **fuel supply issues** tend to have the longest durations on average.
 
-<iframe src="assets/duration_by_cause.html" width="900" height="550" frameborder="0"></iframe>
+<iframe src="assets/duration_by_cause.html" width="900" height="600" frameborder="0"></iframe>
 
 # Assessment of Missingness
 
@@ -47,7 +47,7 @@ The permutation test yielded a **p-value of 0.0220**, which is below our 0.05 si
 
 This suggests that missingness in `CAUSE.CATEGORY.DETAIL` **does depend** on `CLIMATE.CATEGORY`, and is therefore **not Missing Completely At Random (MCAR)**.
 
-<iframe src="assets/missingness_test.html" width="800" height="500" frameborder="0"></iframe>
+<iframe src="assets/missingness_test.html" width="800" height="600" frameborder="0"></iframe>
 
 # Hypothesis Testing
 
@@ -63,7 +63,7 @@ The permutation test yielded a **p-value of 0.0000**.
 
 This very small p-value provides strong evidence against the null hypothesis, suggesting that **weather-related outages are significantly longer** than non-weather outages.
 
-<iframe src="assets/weather_duration_test.html" width="850" height="500" frameborder="0"></iframe>
+<iframe src="assets/weather_duration_test.html" width="850" height="600" frameborder="0"></iframe>
 
 # Framing a Prediction Problem
 
@@ -147,4 +147,4 @@ We conducted a **permutation test** with the following hypotheses:
 
 Since the p-value is very high, we **fail to reject the null hypothesis**, meaning there is **no significant evidence** of unfairness in model precision between Winter and Summer outages.
 
-<iframe src="assets/fairness_precision_test.html" width="800" height="500" frameborder="0"></iframe>
+<iframe src="assets/fairness_precision_test.html" width="800" height="600" frameborder="0"></iframe>
