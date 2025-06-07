@@ -24,6 +24,14 @@ We performed the following key cleaning steps:
 - Created `OUTAGE.DURATION.HOURS` by dividing the duration in minutes by 60.
 - Added derived time features like `OUTAGE.START.HOUR` and `OUTAGE.START.MONTH`.
 
+| OUTAGE.START        |   OUTAGE.DURATION.HOURS | CAUSE.CATEGORY   | CLIMATE.CATEGORY   |   CUSTOMERS.AFFECTED |
+|:--------------------|------------------------:|:-----------------|:-------------------|---------------------:|
+| 2011-07-01 05:00:00 |                    51   | severe weather   | normal             |                70000 |
+| 2010-10-26 08:00:00 |                    50   | severe weather   | cold               |                70000 |
+| 2012-06-19 04:30:00 |                    42.5 | severe weather   | normal             |                68200 |
+| 2015-07-18 02:00:00 |                    29   | severe weather   | warm               |               250000 |
+| 2010-11-13 03:00:00 |                    31   | severe weather   | cold               |                60000 |
+
 Below is a distribution of outage durations, showing a strong right skew.
 
 <iframe src="assets/duration_hist.html" width="900" height="600" frameborder="0"></iframe>
@@ -31,6 +39,14 @@ Below is a distribution of outage durations, showing a strong right skew.
 This plot shows how outage duration varies across different cause categories. **Weather-related causes** and **fuel supply issues** tend to have the longest durations on average.
 
 <iframe src="assets/duration_by_cause.html" width="900" height="600" frameborder="0"></iframe>
+
+| Cause                 |   cold |   normal |   warm |
+|:----------------------|-------:|---------:|-------:|
+| equipment failure     |    5.1 |     53.4 |    8.4 |
+| fuel supply emergency |  290.5 |    127.6 |  380   |
+| intentional attack    |    8.3 |      7.1 |    5.2 |
+| islanding             |    4.3 |      2.4 |    3.5 |
+| public appeal         |   35.4 |     22.9 |    9.9 |
 
 # Assessment of Missingness
 
