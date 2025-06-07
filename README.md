@@ -15,3 +15,13 @@ Our main question is: **Do weather-related outages last longer than non-weather-
   - `CUSTOMERS.AFFECTED` (impact size)
   - `OUTAGE.START` (timestamp when outage began)
 
+# Data Cleaning and Exploratory Data Analysis
+
+We performed the following key cleaning steps:
+
+- Converted `OUTAGE.START.DATE` and `OUTAGE.RESTORATION.DATE` to datetime format.
+- Combined date and time columns into single `OUTAGE.START` and `OUTAGE.RESTORATION` timestamp columns using `pd.to_datetime` and `pd.to_timedelta`.
+- Created `OUTAGE.DURATION.HOURS` by dividing the duration in minutes by 60.
+- Added derived time features like `OUTAGE.START.HOUR` and `OUTAGE.START.MONTH`.
+
+Below is a distribution of outage durations, showing a strong right skew.
