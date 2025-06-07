@@ -26,6 +26,13 @@ We performed the following key cleaning steps:
 
 Below is a distribution of outage durations, showing a strong right skew.
 <iframe src="imgs/duration_hist.html" width="800" height="500" frameborder="0"></iframe>
-
 This plot shows how outage duration varies across different cause categories. **Weather-related causes** and **fuel supply issues** tend to have the longest durations on average.
 <iframe src="imgs/duration_by_cause.html" width="900" height="550" frameborder="0"></iframe>
+
+# Assessment of Missingness
+We suspect that the `CAUSE.CATEGORY.DETAIL` column is **Not Missing At Random (NMAR)**.
+
+The missingness of this column likely depends on the value itself. In many cases, a utility might not provide a detailed explanation of the cause if the event was ambiguous or uncertain. This means the missingness is tied to the nature of the outage itself — not just other columns. As a result, we believe this column is NMAR.
+
+To confirm this, we would ideally want access to internal reporting policies from utilities, or more metadata about when and how detailed causes are logged.
+
